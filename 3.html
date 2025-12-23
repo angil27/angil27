@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>植萃寧靜系列 | 產品作品集</title>
+    <style>
+        /* --- 1. 核心配色與基礎設定 --- */
+        :root {
+            --bg-color: #F5F2ED;      /* 網頁主背景：暖杏色 */
+            --primary-green: #5F7161; /* 深綠色：標題與導覽 */
+            --accent-green: #97A97C;  /* 嫩綠色：標籤與細節 */
+            --text-dark: #3E3E3E;     /* 深灰色：內文 */
+            --card-white: #FFFFFF;    /* 卡片白 */
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: "PingFang TC", "Microsoft JhengHei", sans-serif; }
+        
+        body { 
+            background-color: var(--bg-color); 
+            color: var(--text-dark); 
+            line-height: 1.7; 
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 25px; }
+
+        /* --- 2. 導覽列設計 --- */
+        nav { 
+            background: rgba(255, 255, 255, 0.8); 
+            backdrop-filter: blur(10px);
+            padding: 20px 0; 
+            position: sticky; 
+            top: 0; 
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        nav .container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.4rem; color: var(--primary-green); letter-spacing: 2px; font-weight: bold; text-transform: uppercase; }
+        nav ul { display: flex; list-style: none; }
+        nav ul li a { text-decoration: none; color: var(--text-dark); margin-left: 25px; font-size: 0.95rem; transition: color 0.3s; }
+        nav ul li a:hover { color: var(--primary-green); }
+
+        /* --- 3. Hero 視覺區 --- */
+        .hero { text-align: center; padding: 100px 0 60px; }
+        .hero h2 { font-size: 2.8rem; color: var(--primary-green); margin-bottom: 20px; font-weight: 500; }
+        .hero p { color: #666; font-size: 1.1rem; letter-spacing: 1px; }
+        .hero-line { width: 50px; height: 2px; background: var(--accent-green); margin: 25px auto; }
+
+        /* --- 4. 產品網格 (Grid) --- */
+        .product-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); 
+            gap: 40px; 
+            padding-bottom: 80px; 
+        }
+
+        /* --- 5. 產品卡片設計 --- */
+        .product-card { 
+            background: var(--card-white); 
+            border-radius: 20px; 
+            overflow: hidden; /* 確保圖片圓角不跑版 */
+            box-shadow: 0 15px 35px rgba(0,0,0,0.03); 
+            transition: all 0.4s ease; 
+            display: flex;
+            flex-direction: column;
+        }
+        .product-card:hover { 
+            transform: translateY(-12px); 
+            box-shadow: 0 20px 40px rgba(95, 113, 97, 0.1); 
+        }
+
+        /* ★★★ 新增：圖片樣式 ★★★ */
+        /* 這裡取代了原本的 .product-image 樣式 */
+        .product-card img {
+            width: 100%;            /* 讓圖片寬度填滿卡片 */
+            height: 280px;          /* 設定固定高度，保持卡片整齊 */
+            object-fit: cover;      /* 關鍵：自動裁切圖片以填滿區域，防止變形 */
+            display: block;         /* 避免圖片下方產生空隙 */
+            border-bottom: 1px solid rgba(0,0,0,0.03); /* 微弱分隔線 */
+        }
+
+        /* 產品資訊內容 */
+        .product-info { padding: 35px; flex-grow: 1; }
+        .category { 
+            font-size: 0.75rem; 
+            color: var(--accent-green); 
+            font-weight: bold; 
+            letter-spacing: 2px; 
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            display: block;
+        }
+        .product-info h3 { margin-bottom: 15px; color: var(--primary-green); font-size: 1.4rem; }
+        .product-info p.desc { font-size: 0.95rem; color: #777; margin-bottom: 25px; }
+
+        /* 客戶心得區塊 */
+        .testimonial { 
+            background: #F9FAF9; 
+            padding: 20px; 
+            border-radius: 12px; 
+            border-left: 3px solid var(--accent-green);
+        }
+        .testimonial p { font-style: italic; font-size: 0.88rem; color: #555; margin-bottom: 8px; }
+        .customer { display: block; font-size: 0.8rem; font-weight: bold; color: var(--primary-green); text-align: right; }
+
+        /* --- 6. 頁尾 --- */
+        footer { text-align: center; padding: 60px 0; background: var(--primary-green); color: #E8EBE7; }
+        footer p { font-size: 0.9rem; opacity: 0.8; margin-bottom: 10px; }
+
+        /* 響應式調整 */
+        @media (max-width: 600px) {
+            .hero h2 { font-size: 2rem; }
+            .product-grid { grid-template-columns: 1fr; }
+            .product-card img { height: 220px; /* 手機版圖片高度稍微調小 */ }
+            nav .container { flex-direction: column; }
+            nav ul { margin-top: 15px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="container">
+            <h1 class="logo">Serene Botanical</h1>
+            <ul>
+                <li><a href="#">系列介紹</a></li>
+                <li><a href="#">品牌故事</a></li>
+                <li><a href="#">作品集</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="container">
+            <h2>植萃寧靜系列</h2>
+            <div class="hero-line"></div>
+            <p>融合自然能量與科研技術，找回肌膚最初的純粹感。</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="product-grid">
+            
+            <div class="product-card">
+                <img src="1.png" alt="植萃平衡適應原乳霜">
+                <div class="product-info">
+                    <span class="category">Balance</span>
+                    <h3>植萃平衡適應原乳霜</h3>
+                    <p class="desc">富含適應原草本成分，深層滋潤而不油膩，能有效穩定換季時的敏感肌膚。</p>
+                    <div class="testimonial">
+                        <p>「這款乳霜是我用過最溫和的，換季脫皮的狀況改善非常多，大推！」</p>
+                        <span class="customer">— 林小姐 / 辦公室職員</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                 <img src="2.png" alt="植萃深層修護膏">
+                <div class="product-info">
+                    <span class="category">Repair</span>
+                    <h3>植萃深層修護膏</h3>
+                    <p class="desc">萬用型修護配方，針對極乾燥部位提供即時補水，重建肌膚天然防禦屏障。</p>
+                    <div class="testimonial">
+                        <p>「成分很天然，擦在手肘乾裂處很快就吸收了，琥珀瓶身很有質感。」</p>
+                        <span class="customer">— Jason L. / 產品經理</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                 <img src="3.png" alt="水潤煥活身體系列">
+                <div class="product-info">
+                    <span class="category">Hydrate</span>
+                    <h3>水潤煥活身體系列</h3>
+                    <p class="desc">輕盈如水的身體乳液，能立即緩解洗澡後的肌膚緊繃感，帶來全天候的水嫩觸感。</p>
+                    <div class="testimonial">
+                        <p>「味道是非常療癒的草本清香，每天晚上洗完澡使用都覺得壓力被釋放了。」</p>
+                        <span class="customer">— 陳小姐 / 瑜珈導師</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                 <img src="4.png" alt="夢境賦活晚安面膜">
+                <div class="product-info">
+                    <span class="category">Night Care</span>
+                    <h3>夢境賦活晚安面膜</h3>
+                    <p class="desc">在您睡眠時進行深度修復，提升肌膚透亮感，隔日醒來如同做完高級SPA。</p>
+                    <div class="testimonial">
+                        <p>「熬夜後使用非常有感，隔天臉部完全沒有暗沉蠟黃，素顏氣
